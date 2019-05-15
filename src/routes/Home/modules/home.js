@@ -1,7 +1,7 @@
 import update from 'react-addons-update';
 import constants from './actionConstants';
 import {Dimensions,AsyncStorage, Alert} from 'react-native';
-// import RNGooglePlaces from 'react-native-google-places';
+import RNGooglePlaces from 'react-native-google-places';
 import request from "../../../util/request";
 import calculateFare from "../../../util/fareCalculator";
 import { Actions } from 'react-native-router-flux';
@@ -142,15 +142,12 @@ export function bookCar() {
     return async (dispatch,store)  => {
 
         let mobile = await AsyncStorage.getItem('mobile');
-        let username = await AsyncStorage.getItem('name');
-        let user_id1 = await AsyncStorage.getItem('user_id');
-        let email = await AsyncStorage.getItem('email');
+        let token = await AsyncStorage.getItem('token');
 
         const payload = { 
                 data:{
                     mobile:mobile,
-                    username: username,
-                    email: email,
+                    username: token,
                     pickUp: store().home.selectedAddress.selectedPickUp.address,
                     pickUpLatitude: store().home.selectedAddress.selectedPickUp.latitude,
                     pickUpLongitude: store().home.selectedAddress.selectedPickUp.longitude,
