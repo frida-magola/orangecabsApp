@@ -9,10 +9,10 @@ import ForgotPassword from './Riders/ForgotPassword/container';
 import Driver from './Drivers/container/DriverContainer';
 import ResetPassword from './Riders/ResetPassword/container';
 import ActivatePassword from './Riders/Activate/container';
-// import ViewTrip from './viewtrips/container/ViewTripContainer';
+import ViewTrip from './viewtrips/container/ViewTripContainer';
 import Help from './Help/container';
 import Message from './Message/container/MessageContainer';
-// import Modal from './Modal/container/ModalContainer';
+import Modal from './Modal/container/ModalContainer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
@@ -28,7 +28,7 @@ const TabIcon = ({focused, iconName}) => {
 
 const MenuIcon = () => {
     return (
-        <Icon name='menu' size={30} />
+        <Icon name='menu' size={30} color="#fff"/>
     )
 }
 
@@ -45,10 +45,10 @@ const scenes = Actions.create(
         <Scene key="driver" component={Driver} title="Driver Home"/>
         <Scene key="resetpass" component={ResetPassword} title="Reset Password" drawer={false} initial={false} hideNavBar/>
         <Scene key="activatepass" component={ActivatePassword} title="Activate Password" drawer={false} initial={false} hideNavBar/>
-        {/* <Scene key="viewtrip" component={ViewTrip} title="View trips"/> */}
+        <Scene key="viewtrip" component={ViewTrip} navTransparent/>
         <Scene key="help" component={Help} title="Help ?"/>
         <Scene key="message" component={Message} title="Message"/>
-        {/* <Scene key="modal" component={Modal} title="Complete your booking"/> */}
+        <Scene key="modal" component={Modal} navTransparent/>
         {/* <Scene key="Login" drawer={false} component={Login} initial={true} hideNavBar/>
         <Scene key="Anasayfa" component={Anasayfa} title="Anasayfa" initial={false} renderLeftButton={null} />
         <Scene key="Cari" component={Cari} title="Cari" />

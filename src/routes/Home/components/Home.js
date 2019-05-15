@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text,AsyncStorage,Modal,Alert} from 'react-native';
+import {View, Text,AsyncStorage,Modal,Alert, Dimensions } from 'react-native';
 import MapContainer from './MapContainer';
 import {Container,Header, Left, Body, Right, Button,Footer, FooterTab} from 'native-base';
-// import Fare from './Fare';
-// import BooknowBtn from './FloatingActionBtn';
+import Fare from './Fare';
+import BooknowBtn from './FloatingActionBtn';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
@@ -16,36 +16,13 @@ class Home extends React.Component {
             userMobile: '',
             userPassword: '',
             token:'',
-            userInfo:[]
+            userInfo:[],
+            
         };
     }
 
-    // componentDidMount(){
-    //     this.props.getCurrentLocation();
-    //     this.loadInitialState()
-    //     .then((mobile) => {
-    //         if(mobile) this.setState({mobile: mobile})
-            
-    //     })
-    //     .done();
-    // }
-
-    // loadInitialState = async () => {
-    //     let mobile = await AsyncStorage.getItem('mobile');
-    //     let username = await AsyncStorage.getItem('name');
-    //     let user_id1 = await AsyncStorage.getItem('user_id');
-    //     // let id = user_id.toString();
-    //     let email = await AsyncStorage.getItem('email');
-    //     // alert(mobile);
-
-    //     let trips = await AsyncStorage.getItem('trips');
-
-    //     if(trips !== null){
-    //         Actions.modal();
-    //     }
-    // }
-
     componentDidMount(){
+        this.props.getCurrentLocation();
         this.loadInitialState()
         .done();
         this.user();
@@ -54,17 +31,20 @@ class Home extends React.Component {
     
     loadInitialState = async () => {
         let mobile = await AsyncStorage.getItem('mobile');
-        // let userInfor = await AsyncStorage.getItem('userInfos');
-        let token = await AsyncStorage.getItem('id_token');
+        let token = await AsyncStorage.getItem('token');
         this.setState({token:token});
-        // this.setState({userInfo:userInfor.userInfo});
-        // alert(this.state.userInfo);
+       
+        //Available trip
+            let trips = await AsyncStorage.getItem('trips');
+            if(trips !== null){
+                Actions.modal();
+            }
     
     }
     
         // get user info
         user = async () =>{
-          let token = await AsyncStorage.getItem('id_token');
+          let token = await AsyncStorage.getItem('token');
           if(token != null){
             await fetch('http://127.0.0.1/orangecabs/app/user_details.php',{
                 method:"POST",
@@ -87,7 +67,7 @@ class Home extends React.Component {
     _logout = async () => {
     
         let mobile = await AsyncStorage.getItem('mobile');
-        let token = await AsyncStorage.getItem('id_token');
+        let token = await AsyncStorage.getItem('token');
     
         await fetch('http://10.0.0.44/orangecabs/app/logoutapp.php',{
                 method: "POST",
@@ -105,7 +85,7 @@ class Home extends React.Component {
                 if(responseJson === 'ok'){
                     AsyncStorage.removeItem('mobile');
                     AsyncStorage.removeItem('userInfos');
-                    AsyncStorage.removeItem('id_token');
+                    AsyncStorage.removeItem('token');
                     Actions.accueil();
                 }else{
                   Alert.alert('Failed',JSON.stringify(responseJson)),[{text: 'Okay'}];
@@ -127,17 +107,11 @@ class Home extends React.Component {
 
         return(
              <Container>
-                 {/* <Header style={{backgroundColor:"#11A0DC"}} 
+                 <Header style={{backgroundColor:"#11A0DC"}} 
                  iosBarStyle="light-content"
                  androidStatusBarColor="#F89D29"
                  >
-                    <Left>
-                        <Button transparent 
-                            onPress={()=>Actions.drawerOpen()}
-                        >
-                            <Icon name="bars" style={styles.icon}/>
-                        </Button>
-                    </Left>
+                    <Left></Left>
                     <Body>
                         <Text style={styles.headerText}>Book now</Text>
                         
@@ -148,34 +122,9 @@ class Home extends React.Component {
                         </Button>
                     </Right>
 
-                </Header> */}
+                </Header>
 
-                {/* <Footer> */}
-                    {/* <FooterTab style={styles.footerContainer} >
-
-                        <Button vertical active onPress={() => Actions.home()}>
-                            <Icon name="plus" size={20} color={"#F89D29"} />
-                            <Text style={{fontSize:12, color:"grey"}}>Book now</Text>
-                        </Button>
-
-                        <Button vertical onPress={() => Actions.viewtrip()}>
-                            <Icon name="eye" size={20} color={"#F89D29"} />
-                            <Text style={{fontSize:12, color:"grey"}}>View Trips</Text>
-                        </Button>
-                        <Button vertical onPress={() => Actions.help()}>
-                            <Icon active name="question" size={20} color={"#F89D29"} />
-                            <Text style={{fontSize:12, color:"grey"}}>Help</Text>
-                        </Button>
-                        <Button vertical onPress={() => Actions.message()}>
-                            <Icon name="envelope-o" size={20} color={"#F89D29"} />
-                            <Text style={{fontSize:12, color:"grey"}}>Message</Text>
-                        </Button>
-
-                    </FooterTab>
-		        </Footer> */}
-
-                                 {/* <HeaderComponent mobile={this.props.mobile} password={this.props.passwordInputTxt}/> */}
-                 {/* {this.props.region.latitude &&
+                 {this.props.region.latitude &&
                     <MapContainer 
                         region={this.props.region} 
                         getInputData={this.props.getInputData}
@@ -187,22 +136,45 @@ class Home extends React.Component {
                         selectedAddress={this.props.selectedAddress}
                     />
                     
-                 } */}
-                 <MapContainer 
+                 } 
 
-                />
                  {/* action button*/}
-                 {/* <BooknowBtn onPressAction={()=>this.props.bookCar()}/>  */}
-
-
+                 {
+                     this.props.fare &&
+                     <BooknowBtn onPressAction={()=>this.props.bookCar()}/> 
+                 }
+                 
                  {/* fare */}
-                 {/* {
+                 {
                      this.props.fare && 
                      <Fare fare={this.props.fare}/>
-                 } */}
-                 {/*<FooterComponent/> */} 
-                
+                     
+                 }
 
+                 <Footer>
+                    <FooterTab style={styles.footerContainer} >
+
+                        {/* <Button vertical active onPress={() => Actions.home()}>
+                            <Icon name="plus" size={20} color={"#F89D29"} />
+                            <Text style={{fontSize:12, color:"grey"}}>Book now</Text>
+                        </Button> */}
+
+                        {/* <Button vertical onPress={() => Actions.viewtrip()}>
+                            <Icon name="eye" size={20} color={"#F89D29"} />
+                            <Text style={{fontSize:12, color:"grey"}}>View Trips</Text>
+                        </Button> */}
+                        <Button vertical onPress={() => Actions.help()}>
+                            <Icon active name="question" size={20} color={"#F89D29"} />
+                            <Text style={{fontSize:12, color:"grey"}}>Help</Text>
+                        </Button>
+                        <Button vertical onPress={() => Actions.message()}>
+                            <Icon name="envelope-o" size={20} color={"#F89D29"} />
+                            <Text style={{fontSize:12, color:"grey"}}>Message</Text>
+                        </Button>
+
+                    </FooterTab>
+		        </Footer>
+                
              </Container>
         );
     }

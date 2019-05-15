@@ -225,7 +225,7 @@ class LoginRider extends React.Component {
                 if(responseJson === 'ok'){
                     // alert(JSON.stringify(responseJson));
                     // Alert.alert('Success','Welcome back'+username+'!'),[{text:'Okay'}];
-                    AsyncStorage.setItem('id_token',token);
+                    AsyncStorage.setItem('token',token);
                     AsyncStorage.setItem('mobile',userMobile);
                     Actions.home();
                     // this.props.navigation.navigate("Bookings");

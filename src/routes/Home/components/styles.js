@@ -7,7 +7,7 @@ export const styles=StyleSheet.create({
     },
     headerText:{
         color:"#fff",
-        fontSize:20
+        // fontSize:20
     },
     logo: {
         width:38,

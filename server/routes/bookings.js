@@ -17,23 +17,18 @@ router.get("/bookings", function(req,res,next){
 router.post("/bookings", function(req,res,next){
     var booking = req.body.data;
     var mobile = booking.mobile;
-    var username = booking.username;
-    var email = booking.email;
+    var token = booking.token;
 
-    var userId ='';
-    var lastInsertId = '';
-
-    connection.query('SELECT user_id FROM users WHERE mobile=? AND username=? AND email=?',
-        [mobile,username,email],function(err,results){
+    connection.query('SELECT user_id FROM users WHERE mobile=? AND token=?',
+        [mobile,token],function(err,results){
         if (err) {
             res.status(400);
             res.json({
                 error: "Bad data!"
             });
         }
-            userId = results[0].user_id;
+            
             res.send(results);
-
 
     });
 

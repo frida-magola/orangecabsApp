@@ -17,8 +17,7 @@ router.get("/completeBook", function(req,res,next){
 router.post("/completeBook", function(req,res,next){
     var booking = req.body;
     var mobile = booking.mobile;
-    var username = booking.username;
-    var email = booking.email;
+    var token = booking.token;
     var pickuplocation = booking.pickup;
     var amountofrider = booking.amountofrider;
     var nameofrider = booking.nameofrider;
@@ -32,7 +31,7 @@ router.post("/completeBook", function(req,res,next){
     var status = booking.status;
 
      //Insert into the data base
-     connection.query('INSERT INTO trips SET user_id=?, departure=?, departureLatitude=?, departureLongitude=?, destination=?, destinationLatitude=?, destinationLongitude=?, amountofriders=?, nameofonerider=?, price=?, mobile=?, status_pay=?, date=?',
+     connection.query('INSERT INTO trips SET user_id=?, departure=?, departureLatitude=?, departureLongitude=?, destination=?, destinationLatitude=?, destinationLongitude=?, amountofriders=?, nameofonerider=?, price=?, mobile=?, status_pay=?, date=?,access_token=?',
      [
         mobile,
         pickuplocation,
@@ -46,7 +45,8 @@ router.post("/completeBook", function(req,res,next){
         price,
         mobile,
         status,
-        datePicker
+        datePicker,
+        token
      ],function(error,results,fields){
      if(error){
          console.log(error);
