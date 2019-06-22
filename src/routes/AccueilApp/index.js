@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { ImageBackground, View, StatusBar,AsyncStorage, Image} from "react-native";
+import { ImageBackground, View, StatusBar,Image} from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 import { Container, Button, H3, Text } from "native-base";
 import { Actions } from "react-native-router-flux";
 
@@ -18,7 +19,7 @@ class Home extends Component {
 loadInitialState = async () => {
     let mobile = await AsyncStorage.getItem('mobile');
     let username = await AsyncStorage.getItem('username');
-    let token = await AsyncStorage.getItem('id_token');
+    let token = await AsyncStorage.getItem('token');
     this.setState({username:username});
     if(token !== null){
         Actions.home();

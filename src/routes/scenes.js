@@ -12,9 +12,9 @@ import ActivatePassword from './Riders/Activate/container';
 import ViewTrip from './viewtrips/container/ViewTripContainer';
 import Help from './Help/container';
 import Message from './Message/container/MessageContainer';
+import Profile from './Profile/container/ProfileContainer';
 import Modal from './Modal/container/ModalContainer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 
 //drawer
 import Sidebar from './sidebar/container';
@@ -28,11 +28,9 @@ const TabIcon = ({focused, iconName}) => {
 
 const MenuIcon = () => {
     return (
-        <Icon name='menu' size={30} color="#fff"/>
+        <Icon name='menu' size={30} color="#fff" style={{marginTop:-40}}/>
     )
 }
-
-
 const scenes = Actions.create(
     <Drawer key="drawer" drawer contentComponent={Sidebar} drawerIcon={MenuIcon} drawerWidth={300}>
       <Scene key="root">
@@ -46,8 +44,9 @@ const scenes = Actions.create(
         <Scene key="resetpass" component={ResetPassword} title="Reset Password" drawer={false} initial={false} hideNavBar/>
         <Scene key="activatepass" component={ActivatePassword} title="Activate Password" drawer={false} initial={false} hideNavBar/>
         <Scene key="viewtrip" component={ViewTrip} navTransparent/>
-        <Scene key="help" component={Help} title="Help ?"/>
-        <Scene key="message" component={Message} title="Message"/>
+        <Scene key="help" component={Help} navTransparent/>
+        <Scene key="message" component={Message} navTransparent/>
+        <Scene key="profile" component={Profile} navTransparent/>
         <Scene key="modal" component={Modal} navTransparent/>
         {/* <Scene key="Login" drawer={false} component={Login} initial={true} hideNavBar/>
         <Scene key="Anasayfa" component={Anasayfa} title="Anasayfa" initial={false} renderLeftButton={null} />

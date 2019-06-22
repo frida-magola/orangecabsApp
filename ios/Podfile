@@ -34,11 +34,14 @@ target 'orangecabs' do
   
     # react-native-maps dependencies
     pod 'react-native-maps', path: rn_maps_path
-    pod 'react-native-google-maps', path: rn_maps_path  # Uncomment this line if you want to support GoogleMaps on iOS
+    #pod 'react-native-google-maps', path: rn_maps_path  # Uncomment this line if you want to support GoogleMaps on iOS
     pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
-    # pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
-    pod 'GooglePlaces'
-    pod 'GooglePlacePicker'
+    #pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
+    pod 'GooglePlaces','~>3.0.3'
+    pod 'GooglePlacePicker','~>3.0.3'
+
+    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   end
   
   post_install do |installer|

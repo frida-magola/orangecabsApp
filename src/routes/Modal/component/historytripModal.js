@@ -7,28 +7,41 @@ import {
   KeyboardAvoidingView,
   // Plateform
 } from 'react-native';
-import {Content, Card, CardItem,Left,Right,Body,Button,ListItem,Header} from 'native-base';
+import {Content, Card, CardItem,Left,Right,Body,Button,Header} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import stylesp from './ModalStyles';
 import styles from '../../Home/components/styles';
 import stylesv from '../../viewtrips/component/ViewTripStyles';
+import { ListItem } from 'react-native-elements'
 
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 
 class HistoryTripModal extends Component {
-    state = {
-      modalVisible: false,
-      // selected: (new Map(): Map<string, boolean>)
-    };
-  
+  state = {
+    modalVisible: false,
+    message:'You have not taken a trip yet.'
+  };
+
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
 
   render() {
+    const list = [
+      {
+        title: ' History Trip',
+        icon: 'history'
+      },
+    ]
+    const message = [
+      {
+        title: ' You have not taken a trip yet.',
+        icon: 'av-timer'
+      },
+    ]
     return (
-      <View >
+      <View style={{marginTop:0}}>
         <Modal
           animationType="slide"
           transparent={false}
@@ -44,8 +57,8 @@ class HistoryTripModal extends Component {
                           </Button>
                       </Left>
                       <Body>
-                          <Text style={styles.headerText}>History trips</Text>
-                          
+                          <Text style={styles.headerText}>History Trip</Text>
+                         
                       </Body>
                       <Right>
                           <Button transparent onPress={this.logout}> 
@@ -55,15 +68,15 @@ class HistoryTripModal extends Component {
                       </Right>
 
                   </Header>
+                
+              <View>
                 <ScrollView>
                   <KeyboardAvoidingView>
-
-
-              {
-                this.props.history &&
-                <FlatList 
-                    data={this.props.history}
-                    renderItem={({item}) => 
+                    {
+                      this.props.historydata ?
+                      <FlatList 
+                          data={this.props.historydata}
+                          renderItem={({item}) => 
                       
                           <Content>
                             <Card>
@@ -78,14 +91,6 @@ class HistoryTripModal extends Component {
                                     <Text style={{alignItems:'flex-start',marginTop:15,marginLeft:-70}}>{item.destination}</Text>
                                     </Body>
                                     <Right>
-                                      <TouchableHighlight
-                                          onPress={() => {
-                                            this.setModalVisible(!this.state.modalVisible);
-                                          }}>
-                                          <Button transparent onPress={this.logout}> 
-                                            {/* <Icon name="trash" color="red" style={{fontSize:20}}/>   */}
-                                          </Button>
-                                        </TouchableHighlight>
                                     </Right>
                                 </CardItem>
                                 
@@ -97,14 +102,6 @@ class HistoryTripModal extends Component {
                                       <Text style={{alignItems:'flex-start',marginTop:15,marginLeft:-70}}>{moment(item.date).format('MMMM, Do YYYY HH:mm')}</Text>
                                     </Body>
                                     <Right>
-                                      <TouchableHighlight
-                                        onPress={() => {
-                                          this.setModalVisible(!this.state.modalVisible);
-                                        }}>
-                                        <Button transparent onPress={this.logout}> 
-                                          {/* <Icon name="pencil-square-o" color="green" style={{fontSize:20}}/>   */}
-                                        </Button>
-                                      </TouchableHighlight>
                                     </Right>
                                 </CardItem>
                                 <CardItem>
@@ -115,14 +112,6 @@ class HistoryTripModal extends Component {
                                       <Text style={{alignItems:'flex-start',fontWeight:'bold',marginTop:15,marginLeft:-70}}>ZAR {item.price}</Text>
                                    </Body>
                                    <Right>
-                                   <TouchableHighlight
-                                      onPress={() => {
-                                        this.setModalVisible(!this.state.modalVisible);
-                                      }}>
-                                      <Button transparent onPress={this.logout}> 
-                                        {/* <Icon name="credit-card" color="blue" style={{fontSize:20}}/>   */}
-                                      </Button>
-                                    </TouchableHighlight>
                                    </Right>
                                 </CardItem>
                                 <CardItem>
@@ -133,24 +122,29 @@ class HistoryTripModal extends Component {
                                       <Text style={{alignItems:'flex-start',marginTop:15,marginLeft:-70}}>{item.status_pay}</Text>
                                    </Body>
                                    <Right>
-                                   <TouchableHighlight
-                                      onPress={() => {
-                                        this.setModalVisible(!this.state.modalVisible);
-                                      }}>
-                                      <Button transparent onPress={this.logout}> 
-                                        <Icon name="trash" color="red" style={{fontSize:20}}/>  
-                                      </Button>
-                                    </TouchableHighlight>
+                                      <TouchableHighlight
+                                          onPress={() => {
+                                            this.setModalVisible(!this.state.modalVisible);
+                                          }}>
+                                          <Button transparent onPress={this.logout}> 
+                                            <Icon name="trash" color="red" style={{fontSize:22}}/>  
+                                          </Button>
+                                       </TouchableHighlight>
                                    </Right>
                                 </CardItem>
                             </Card>
                           </Content>                       
                   }
                 />
-
+                  :message.map((item, i) => (
+                    <ListItem
+                      key={i}
+                      title={item.title}
+                      leftIcon={{ name: item.icon }}
+                    />
+                  ))
               }
 
-                <View>
                   <TouchableHighlight
                     onPress={() => {
                       this.setModalVisible(!this.state.modalVisible);}}
@@ -158,45 +152,25 @@ class HistoryTripModal extends Component {
                     >
                     <Text>Previous</Text>
                   </TouchableHighlight>
-                </View>
                 </KeyboardAvoidingView>
-              </ScrollView>
+                </ScrollView>
+              </View>
+                
             </View>
         </Modal>
 
-        <Content>
-          <ListItem icon>
-              <Left>
-              <Button style={{ backgroundColor: "#FF5E3A" }}>
-                  <Icon active name="list-ul" color="#fff"/>
-              </Button>
-              </Left>
-              <Body>
-                  <TouchableHighlight style={[stylesv.buttonSignup,{alignItems:'flex-start'}]}
-                      underlayColor={'transparent'}
-                      onPress={() => {
-                        this.setModalVisible(true);
-                      }}
-                  >
-                      <Text style={{marginTop:-27}}>
-                      History Trips 
-                      </Text>
-                  </TouchableHighlight>
-              </Body>
-              <Right>
-                  <TouchableHighlight style={stylesv.buttonSignup}
-                      underlayColor={'transparent'}
-                      onPress={() => {
-                        this.setModalVisible(true);
-                      }}
-                  >
-                      <Text style={{marginTop:-27}}>
-                      GO 
-                      </Text>
-                  </TouchableHighlight>
-              </Right>
-          </ListItem>
-        </Content>
+        <View>
+        {
+          list.map((item, i) => (
+            <ListItem
+              key={i}
+              title={item.title}
+              leftIcon={{ name: item.icon }}
+              onPress={() => {this.setModalVisible(true);}}
+            />
+          ))
+        }
+        </View>
       </View>
     );
   }

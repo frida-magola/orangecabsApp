@@ -9,13 +9,13 @@ import {
     Dimensions,
     TouchableHighlight,
     Image,
-    AsyncStorage,
     KeyboardAvoidingView,
     Keyboard
 } from 'react-native';
 import { TextInput} from 'react-native-paper';
 import styles from '../Login/LoginStyles';
 import { Actions } from 'react-native-router-flux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;

@@ -8,8 +8,8 @@ import {
     Dimensions,
     TouchableHighlight,
     Image,
-    AsyncStorage
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { TextInput} from 'react-native-paper';
 import styles from './styles';
 import { Actions } from 'react-native-router-flux';

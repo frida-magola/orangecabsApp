@@ -1,11 +1,16 @@
 import { Dimensions } from "react-native";
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get("window")/2;
 
 const styles = {
     fareContainer: {
-        width:width,
+        width:230,
         height:40,
         padding:10,
+        position: "absolute",
+        // bottom: 100,
+        // right:20,
+        top:565,
+        left:0,
         backgroundColor:"#11A0DC"
     },
     fareText: {

@@ -10,9 +10,9 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <GoogleMaps/GoogleMaps.h>
+//#import <GoogleMaps/GoogleMaps.h>
 @import GooglePlaces;
-@import GoogleMaps; 
+@import GoogleMaps;
 
 @implementation AppDelegate
 

@@ -3,6 +3,8 @@ package com.orangecabs;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.arttitude360.reactnative.rngoogleplaces.RNGooglePlacesPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.sha256lib.Sha256Package;
@@ -27,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ExtraDimensionsPackage(),
+            new AsyncStoragePackage(),
             new RNGooglePlacesPackage(),
             new VectorIconsPackage(),
             new Sha256Package(),
