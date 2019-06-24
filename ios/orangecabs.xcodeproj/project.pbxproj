@@ -42,7 +42,6 @@
 		47B02728A75743DE97171C88 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C997A03FBFAC492685E5FBD7 /* Octicons.ttf */; };
 		4C5A69987D63439E9CD13C04 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5510397B8E724F5C8ADCB8D7 /* FontAwesome.ttf */; };
 		6C7C00DA82E54AE49DAF3E06 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E23D648D93D4F0CB5A5E894 /* EvilIcons.ttf */; };
-		72B435FD29CF4FB0818C7649 /* libRNGooglePlaces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE75210F4CE41F7BCD04A94 /* libRNGooglePlaces.a */; };
 		77D17B1A8BF64F1FB03AC32B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00C9A7FDB1DB4042A544F007 /* rubicon-icon-font.ttf */; };
 		79BE5781C65B4BFBAF4F91E4 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2986479BE1D14F708F2CBB46 /* Roboto.ttf */; };
 		7BBC48D78DB94AF19BC8BC43 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F01126FC4DC44C48101C6B4 /* Foundation.ttf */; };
@@ -63,6 +62,7 @@
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		F434178BF34D42DD8867B1AC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A23EC9C09CE452CA5E69647 /* Entypo.ttf */; };
 		F4F8CBF69E144E108903BF54 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25D41448E9964030AE94D4FF /* FontAwesome5_Regular.ttf */; };
+		F5A2381B8F8341268E03C4C8 /* libRNGooglePlaces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD020FE6E2C34FC482C01DFC /* libRNGooglePlaces.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,9 +325,9 @@
 			remoteGlobalIDString = A39873CE1EA65EE60051E01A;
 			remoteInfo = "RNVectorIcons-tvOS";
 		};
-		529D25A022864D2C008B46CE /* PBXContainerItemProxy */ = {
+		52D1307822B02435003C5C0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3E85404E939B46F6BC2B9E25 /* RNGooglePlaces.xcodeproj */;
+			containerPortal = 11507CBBC23943E59B8332FA /* RNGooglePlaces.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNGooglePlaces;
@@ -381,6 +381,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* orangecabsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = orangecabsTests.m; sourceTree = "<group>"; };
 		0F4761DF6D4C40448806E2D6 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		11507CBBC23943E59B8332FA /* RNGooglePlaces.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGooglePlaces.xcodeproj; path = "../node_modules/react-native-google-places/ios/RNGooglePlaces.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* orangecabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orangecabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -392,7 +393,6 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = orangecabs/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1A23EC9C09CE452CA5E69647 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		1CE75210F4CE41F7BCD04A94 /* libRNGooglePlaces.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGooglePlaces.a; sourceTree = "<group>"; };
 		1E23D648D93D4F0CB5A5E894 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		247604DE26CE43F097C815DF /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		25D41448E9964030AE94D4FF /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -402,7 +402,6 @@
 		2D02E4901E0B4A5D006451C7 /* orangecabs-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orangecabs-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A13D0AF93E04A50BC4DC4B5 /* react-native-sha256.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = "react-native-sha256.xcodeproj"; path = "../node_modules/react-native-sha256/ios/react-native-sha256.xcodeproj"; sourceTree = "<group>"; };
-		3E85404E939B46F6BC2B9E25 /* RNGooglePlaces.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGooglePlaces.xcodeproj; path = "../node_modules/react-native-google-places/ios/RNGooglePlaces.xcodeproj"; sourceTree = "<group>"; };
 		3F4AE62CF4134972BC75F62C /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		5510397B8E724F5C8ADCB8D7 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		588B92B4449C89E7E03EF8F0 /* Pods-orangecabs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orangecabs.debug.xcconfig"; path = "Target Support Files/Pods-orangecabs/Pods-orangecabs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -419,6 +418,7 @@
 		C905B21468E84307AFC8A99F /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		C997A03FBFAC492685E5FBD7 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		CCA14DA1B56C48099B0D5955 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		CD020FE6E2C34FC482C01DFC /* libRNGooglePlaces.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGooglePlaces.a; sourceTree = "<group>"; };
 		E1CB9477F29B44159C2335FB /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		E5AD3347BF17450DB5BFD8BB /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		E71F025209A6494C8DD7901F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
@@ -457,7 +457,7 @@
 				3E33E70E3E1C408BA7C6A5D8 /* libreact-native-sha256.a in Frameworks */,
 				A490F019610B4308BE63079C /* libRNVectorIcons.a in Frameworks */,
 				9374167A8926EA89C8639264 /* libPods-orangecabs.a in Frameworks */,
-				72B435FD29CF4FB0818C7649 /* libRNGooglePlaces.a in Frameworks */,
+				F5A2381B8F8341268E03C4C8 /* libRNGooglePlaces.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +656,7 @@
 				269833970BFB4284A5B67BE8 /* libreact-native-sha256.a */,
 				8576EC2D85E34B36BF3801E5 /* libRNVectorIcons.a */,
 				EFCEC4D33C314B8AA34ECA6B /* libRNVectorIcons-tvOS.a */,
-				1CE75210F4CE41F7BCD04A94 /* libRNGooglePlaces.a */,
+				CD020FE6E2C34FC482C01DFC /* libRNGooglePlaces.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -678,10 +678,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		529D259D22864D2B008B46CE /* Products */ = {
+		52D1307522B02434003C5C0D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				529D25A122864D2C008B46CE /* libRNGooglePlaces.a */,
+				52D1307922B02435003C5C0D /* libRNGooglePlaces.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -721,7 +721,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				3A13D0AF93E04A50BC4DC4B5 /* react-native-sha256.xcodeproj */,
 				3F4AE62CF4134972BC75F62C /* RNVectorIcons.xcodeproj */,
-				3E85404E939B46F6BC2B9E25 /* RNGooglePlaces.xcodeproj */,
+				11507CBBC23943E59B8332FA /* RNGooglePlaces.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -802,7 +802,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				272C82A757CCADE600F9550A /* [CP] Copy Pods Resources */,
+				B2996D96B36EB1F3C60D6617 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -938,8 +938,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 529D259D22864D2B008B46CE /* Products */;
-					ProjectRef = 3E85404E939B46F6BC2B9E25 /* RNGooglePlaces.xcodeproj */;
+					ProductGroup = 52D1307522B02434003C5C0D /* Products */;
+					ProjectRef = 11507CBBC23943E59B8332FA /* RNGooglePlaces.xcodeproj */;
 				},
 				{
 					ProductGroup = 52239F5522727197009A39BC /* Products */;
@@ -1202,11 +1202,11 @@
 			remoteRef = 52239F9222727197009A39BC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		529D25A122864D2C008B46CE /* libRNGooglePlaces.a */ = {
+		52D1307922B02435003C5C0D /* libRNGooglePlaces.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNGooglePlaces.a;
-			remoteRef = 529D25A022864D2C008B46CE /* PBXContainerItemProxy */;
+			remoteRef = 52D1307822B02435003C5C0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
@@ -1313,7 +1313,21 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		272C82A757CCADE600F9550A /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		B2996D96B36EB1F3C60D6617 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1338,20 +1352,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-orangecabs/Pods-orangecabs-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
 		D21291C188EAA12BCC6CE9FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -7,28 +7,41 @@ import {
   KeyboardAvoidingView,
   // Plateform
 } from 'react-native';
-import {Content, Card, CardItem,Left,Right,Body,Button,ListItem,Header} from 'native-base';
+import {Content, Card, CardItem,Left,Right,Body,Button,Header} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import stylesp from './ModalStyles';
 import styles from '../../Home/components/styles';
 import stylesv from '../../viewtrips/component/ViewTripStyles';
+import { ListItem } from 'react-native-elements'
 
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 
 class HistoryPaymentModal extends Component {
-    state = {
-      modalVisible: false,
-      // selected: (new Map(): Map<string, boolean>)
-    };
-  
+  state = {
+    modalVisible: false,
+    message:'You have not any History payment yet.'
+  };
+
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
 
   render() {
+    const list = [
+      {
+        title: ' History Payment',
+        icon: 'history'
+      },
+    ]
+    const message = [
+      {
+        title: ' You have not any History payment yet.',
+        icon: 'av-timer'
+      },
+    ]
     return (
-      <View >
+      <View style={{marginTop:0}}>
         <Modal
           animationType="slide"
           transparent={false}
@@ -44,8 +57,8 @@ class HistoryPaymentModal extends Component {
                           </Button>
                       </Left>
                       <Body>
-                          <Text style={styles.headerText}>History Payments</Text>
-                          
+                          <Text style={styles.headerText}>History Payment</Text>
+                         
                       </Body>
                       <Right>
                           <Button transparent onPress={this.logout}> 
@@ -55,15 +68,15 @@ class HistoryPaymentModal extends Component {
                       </Right>
 
                   </Header>
+                
+              <View>
                 <ScrollView>
                   <KeyboardAvoidingView>
-
-
-              {
-                this.props.paymenthistory &&
-                <FlatList 
-                    data={this.props.paymenthistory}
-                    renderItem={({item}) => 
+                    {
+                      this.props.paymenthistory ?
+                      <FlatList 
+                          data={this.props.paymenthistory}
+                          renderItem={({item}) => 
                       
                           <Content>
                             <Card>
@@ -147,10 +160,16 @@ class HistoryPaymentModal extends Component {
                           </Content>                       
                   }
                 />
-
+                  : message.map((item, i) => (
+                    <ListItem
+                      key={i}
+                      title={item.title}
+                      leftIcon={{ name: item.icon }}
+                      // onPress={() => {this.setModalVisible(true);}}
+                    />
+                  ))
               }
 
-                <View>
                   <TouchableHighlight
                     onPress={() => {
                       this.setModalVisible(!this.state.modalVisible);}}
@@ -158,45 +177,25 @@ class HistoryPaymentModal extends Component {
                     >
                     <Text>Previous</Text>
                   </TouchableHighlight>
-                </View>
                 </KeyboardAvoidingView>
-              </ScrollView>
+                </ScrollView>
+              </View>
+                
             </View>
         </Modal>
 
-        <Content>
-          <ListItem icon>
-              <Left>
-              <Button style={{ backgroundColor: "green" }}>
-                  <Icon active name="history" color="#fff"/>
-              </Button>
-              </Left>
-              <Body>
-                  <TouchableHighlight style={[stylesv.buttonSignup,{alignItems:'flex-start'}]}
-                      underlayColor={'transparent'}
-                      onPress={() => {
-                        this.setModalVisible(true);
-                      }}
-                  >
-                      <Text style={{marginTop:-27}}>
-                      History Payments
-                      </Text>
-                  </TouchableHighlight>
-              </Body>
-              <Right>
-                  <TouchableHighlight style={stylesv.buttonSignup}
-                      underlayColor={'transparent'}
-                      onPress={() => {
-                        this.setModalVisible(true);
-                      }}
-                  >
-                      <Text style={{marginTop:-27}}>
-                      GO 
-                      </Text>
-                  </TouchableHighlight>
-              </Right>
-          </ListItem>
-        </Content>
+        <View>
+        {
+          list.map((item, i) => (
+            <ListItem
+              key={i}
+              title={item.title}
+              leftIcon={{ name: item.icon }}
+              onPress={() => {this.setModalVisible(true);}}
+            />
+          ))
+        }
+        </View>
       </View>
     );
   }

@@ -101,7 +101,7 @@ class SideBar extends Component {
 loadInitialState = async () => {
     let mobile = await AsyncStorage.getItem("mobile");
     // let userInfor = await AsyncStorage.getItem("userInfos");
-    let token = await AsyncStorage.getItem("id_token");
+    let token = await AsyncStorage.getItem("token");
     this.setState({token:token});
     // this.setState({userInfo:userInfor.userInfo});
     // alert(this.state.userInfo);
@@ -110,7 +110,8 @@ loadInitialState = async () => {
 
     // get user info
     user = async () =>{
-      let token = await AsyncStorage.getItem("id_token");
+      let token = await AsyncStorage.getItem("token");
+      let mobile = await AsyncStorage.getItem("mobile");
       if(token != null){
         await fetch("http://127.0.0.1/orangecabs/app/user_details.php",{
             method:"POST",
@@ -133,7 +134,7 @@ loadInitialState = async () => {
 _logout = async () => {
 
     let mobile = await AsyncStorage.getItem("mobile");
-    let token = await AsyncStorage.getItem("id_token");
+    let token = await AsyncStorage.getItem("token");
 
     await fetch("http://10.0.0.44/orangecabs/app/logoutapp.php",{
             method: "POST",
@@ -151,7 +152,7 @@ _logout = async () => {
             if(responseJson === "ok"){
                 AsyncStorage.removeItem("mobile");
                 AsyncStorage.removeItem("userInfos");
-                AsyncStorage.removeItem("id_token");
+                AsyncStorage.removeItem("token");
                 Actions.accueil();
             }else{
               Alert.alert("Failed",JSON.stringify(responseJson)),[{text: "Okay"}];
@@ -211,7 +212,7 @@ _logout = async () => {
                 <Left>
                   <Icon
                     active
-                    name="plus"
+                    name="add"
                     style={{ color: "#777", fontSize: 26, width: 30 }}
                   />
                   <Text style={styles.text}>
@@ -234,7 +235,7 @@ _logout = async () => {
               <ListItem
                 button
                 noBorder
-                onPress={() => Actions.help()}
+                onPress={() => Actions.viewtrip()}
               >
                 <Left>
                   <Icon
@@ -248,7 +249,7 @@ _logout = async () => {
                 </Left>
 
                   <Right style={{ flex: 1 }}>
-                    <Badge
+                    {/* <Badge
                       style={{
                         borderRadius: 3,
                         height: 25,
@@ -259,39 +260,7 @@ _logout = async () => {
                       <Text
                         style={styles.badgeText}
                       >1</Text>
-                    </Badge>
-                  </Right>
-              </ListItem>
-
-              <ListItem
-                button
-                noBorder
-                onPress={() => Actions.home()}
-              >
-                <Left>
-                  <Icon
-                    active
-                    name="eye"
-                    style={{ color: "#777", fontSize: 26, width: 30 }}
-                  />
-                  <Text style={styles.text}>
-                    My Trips
-                  </Text>
-                </Left>
-                
-                  <Right style={{ flex: 1 }}>
-                    <Badge
-                      style={{
-                        borderRadius: 3,
-                        height: 25,
-                        width: 72,
-                        backgroundColor: "#14353d"
-                      }}
-                    >
-                      <Text
-                        style={styles.badgeText}
-                      >23</Text>
-                    </Badge>
+                    </Badge> */}
                   </Right>
               </ListItem>
 
@@ -303,15 +272,47 @@ _logout = async () => {
                 <Left>
                   <Icon
                     active
-                    name="plus"
+                    name="question"
                     style={{ color: "#777", fontSize: 26, width: 30 }}
                   />
                   <Text style={styles.text}>
-                    Payments
+                    Help
+                  </Text>
+                </Left>
+                
+                  <Right style={{ flex: 1 }}>
+                    {/* <Badge
+                      style={{
+                        borderRadius: 3,
+                        height: 25,
+                        width: 72,
+                        backgroundColor: "#14353d"
+                      }}
+                    >
+                      <Text
+                        style={styles.badgeText}
+                      >23</Text>
+                    </Badge> */}
+                  </Right>
+              </ListItem>
+
+              <ListItem
+                button
+                noBorder
+                onPress={() => Actions.viewtrip()}
+              >
+                <Left>
+                  <Icon
+                    active
+                    name="bookmarks"
+                    style={{ color: "#777", fontSize: 26, width: 30 }}
+                  />
+                  <Text style={styles.text}>
+                    Payment
                   </Text>
                 </Left>
                   <Right style={{ flex: 1 }}>
-                    <Badge
+                    {/* <Badge
                       style={{
                         borderRadius: 3,
                         height: 25,
@@ -322,7 +323,7 @@ _logout = async () => {
                       <Text
                         style={styles.badgeText}
                       >23</Text>
-                    </Badge>
+                    </Badge> */}
                   </Right>
               </ListItem>
 
@@ -334,7 +335,7 @@ _logout = async () => {
                 <Left>
                   <Icon
                     active
-                    name="notification"
+                    name="notifications"
                     style={{ color: "#777", fontSize: 26, width: 30 }}
                   />
                   <Text style={styles.text}>
@@ -343,7 +344,7 @@ _logout = async () => {
                 </Left>
 
                   <Right style={{ flex: 1 }}>
-                    <Badge
+                    {/* <Badge
                       style={{
                         borderRadius: 3,
                         height: 25,
@@ -354,19 +355,19 @@ _logout = async () => {
                       <Text
                         style={styles.badgeText}
                       >12</Text>
-                    </Badge>
+                    </Badge> */}
                   </Right>
               </ListItem>
 
               <ListItem
                 button
                 noBorder
-                onPress={() => Actions.home()}
+                onPress={() => Actions.profile()}
               >
                 <Left>
                   <Icon
                     active
-                    name="user"
+                    name="person"
                     style={{ color: "#777", fontSize: 26, width: 30 }}
                   />
                   <Text style={styles.text}>
@@ -374,7 +375,7 @@ _logout = async () => {
                   </Text>
                 </Left>
                   <Right style={{ flex: 1 }}>
-                    <Badge
+                    {/* <Badge
                       style={{
                         borderRadius: 3,
                         height: 25,
@@ -385,40 +386,9 @@ _logout = async () => {
                       <Text
                         style={styles.badgeText}
                       >user</Text>
-                    </Badge>
+                    </Badge> */}
                   </Right>
               </ListItem> 
-
-              <ListItem
-                button
-                noBorder
-                onPress={() => Actions.help()}
-              >
-                <Left>
-                  <Icon
-                    active
-                    name="help-buoy"
-                    style={{ color: "#777", fontSize: 26, width: 30 }}
-                  />
-                  <Text style={styles.text}>
-                    Help
-                  </Text>
-                </Left>
-                  <Right style={{ flex: 1 }}>
-                    <Badge
-                      style={{
-                        borderRadius: 3,
-                        height: 25,
-                        width: 72,
-                        backgroundColor: "red"
-                      }}
-                    >
-                      <Text
-                        style={styles.badgeText}
-                      >15</Text>
-                    </Badge>
-                  </Right>
-              </ListItem>
 
               <ListItem
                 button
@@ -428,27 +398,12 @@ _logout = async () => {
                 <Left>
                   <Icon
                     active
-                    name="plus"
+                    name="refresh"
                     style={{ color: "#777", fontSize: 26, width: 30 }}
                   />
                   <Text style={styles.text}>Logout</Text>
                 </Left>
               </ListItem> 
-
-               <ListItem
-                button
-                noBorder
-                onPress={() => Actions.help()}
-              >
-                <Left>
-                  <Icon
-                    active
-                    name="calendar"
-                    style={{ color: "#777", fontSize: 26, width: 30 }}
-                  />
-                  <Text style={styles.text}>Share</Text>
-                </Left>
-              </ListItem>
 
           </List>
 

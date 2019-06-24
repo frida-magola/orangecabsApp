@@ -7,28 +7,40 @@ import {
   KeyboardAvoidingView,
   // Plateform
 } from 'react-native';
-import {Content, Card, CardItem,Left,Right,Body,Button,ListItem,Header} from 'native-base';
+import {Content, Card, CardItem,Left,Right,Body,Button,Header} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import stylesp from './ModalStyles';
 import styles from '../../Home/components/styles';
 import stylesv from '../../viewtrips/component/ViewTripStyles';
-
+import { ListItem } from 'react-native-elements'
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 
 class TripPaidModal extends Component {
-    state = {
-      modalVisible: false,
-      // selected: (new Map(): Map<string, boolean>)
-    };
-  
+  state = {
+    modalVisible: false,
+    message:'You have not a trip paid yet.'
+  };
+
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
 
   render() {
+    const list = [
+      {
+        title: ' Trip Paid',
+        icon: 'flight-takeoff'
+      },
+    ]
+    const message = [
+      {
+        title: ' You have not a trip paid yet.',
+        icon: 'av-timer'
+      },
+    ]
     return (
-      <View >
+      <View style={{marginTop:0}}>
         <Modal
           animationType="slide"
           transparent={false}
@@ -45,7 +57,7 @@ class TripPaidModal extends Component {
                       </Left>
                       <Body>
                           <Text style={styles.headerText}>Trips Paid</Text>
-                          
+                         
                       </Body>
                       <Right>
                           <Button transparent onPress={this.logout}> 
@@ -55,15 +67,15 @@ class TripPaidModal extends Component {
                       </Right>
 
                   </Header>
+                
+              <View>
                 <ScrollView>
                   <KeyboardAvoidingView>
-
-
-              {
-                this.props.trippaid &&
-                <FlatList 
-                    data={this.props.trippaid}
-                    renderItem={({item}) => 
+                    {
+                      this.props.trippaid ?
+                      <FlatList 
+                          data={this.props.trippaid}
+                          renderItem={({item}) => 
                       
                           <Content>
                             <Card>
@@ -147,10 +159,15 @@ class TripPaidModal extends Component {
                           </Content>                       
                   }
                 />
-
+                  :message.map((item, i) => (
+                    <ListItem
+                      key={i}
+                      title={item.title}
+                      leftIcon={{ name: item.icon }}
+                    />
+                  ))
               }
 
-                <View>
                   <TouchableHighlight
                     onPress={() => {
                       this.setModalVisible(!this.state.modalVisible);}}
@@ -158,45 +175,25 @@ class TripPaidModal extends Component {
                     >
                     <Text>Previous</Text>
                   </TouchableHighlight>
-                </View>
                 </KeyboardAvoidingView>
-              </ScrollView>
+                </ScrollView>
+              </View>
+                
             </View>
         </Modal>
 
-        <Content>
-          <ListItem icon>
-              <Left>
-              <Button style={{ backgroundColor: "#007AFF" }}>
-                  <Icon active name="eye" color="#fff"/>
-              </Button>
-              </Left>
-              <Body>
-                  <TouchableHighlight style={[stylesv.buttonSignup,{alignItems:'flex-start'}]}
-                      underlayColor={'transparent'}
-                      onPress={() => {
-                        this.setModalVisible(true);
-                      }}
-                  >
-                      <Text style={{marginTop:-27}}>
-                      My trip 
-                      </Text>
-                  </TouchableHighlight>
-              </Body>
-              <Right>
-                  <TouchableHighlight style={stylesv.buttonSignup}
-                      underlayColor={'transparent'}
-                      onPress={() => {
-                        this.setModalVisible(true);
-                      }}
-                  >
-                      <Text style={{marginTop:-27}}>
-                      View 
-                      </Text>
-                  </TouchableHighlight>
-              </Right>
-          </ListItem>
-        </Content>
+        <View>
+        {
+          list.map((item, i) => (
+            <ListItem
+              key={i}
+              title={item.title}
+              leftIcon={{ name: item.icon }}
+              onPress={() => {this.setModalVisible(true);}}
+            />
+          ))
+        }
+        </View>
       </View>
     );
   }

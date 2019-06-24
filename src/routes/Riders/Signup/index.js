@@ -9,12 +9,12 @@ import {
     Dimensions,
     TouchableHighlight,
     Image,
-    AsyncStorage,
     KeyboardAvoidingView,
     Keyboard
 } from 'react-native';
 import { TextInput} from 'react-native-paper';
 import styles from './SignupStyles';
+import AsyncStorage from '@react-native-community/async-storage';
 // import Loading from 'react-native-whc-loading';
 import { sha256 } from 'react-native-sha256';
 import { Actions } from 'react-native-router-flux';

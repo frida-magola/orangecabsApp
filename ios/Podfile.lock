@@ -6,38 +6,18 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - Google-Maps-iOS-Utils (2.1.0):
-    - Google-Maps-iOS-Utils/Clustering (= 2.1.0)
-    - Google-Maps-iOS-Utils/Geometry (= 2.1.0)
-    - Google-Maps-iOS-Utils/Heatmap (= 2.1.0)
-    - Google-Maps-iOS-Utils/QuadTree (= 2.1.0)
-    - GoogleMaps
-  - Google-Maps-iOS-Utils/Clustering (2.1.0):
-    - Google-Maps-iOS-Utils/QuadTree
-    - GoogleMaps
-  - Google-Maps-iOS-Utils/Geometry (2.1.0):
-    - GoogleMaps
-  - Google-Maps-iOS-Utils/Heatmap (2.1.0):
-    - Google-Maps-iOS-Utils/QuadTree
-    - GoogleMaps
-  - Google-Maps-iOS-Utils/QuadTree (2.1.0):
-    - GoogleMaps
-  - GoogleMaps (2.5.0):
-    - GoogleMaps/Maps (= 2.5.0)
-  - GoogleMaps/Base (2.5.0)
-  - GoogleMaps/Maps (2.5.0):
+  - GoogleMaps (3.0.3):
+    - GoogleMaps/Maps (= 3.0.3)
+  - GoogleMaps/Base (3.0.3)
+  - GoogleMaps/Maps (3.0.3):
     - GoogleMaps/Base
-  - GooglePlacePicker (2.5.0):
-    - GoogleMaps (= 2.5.0)
-    - GooglePlaces (= 2.5.0)
-  - GooglePlaces (2.5.0):
-    - GoogleMaps/Base (= 2.5.0)
+  - GooglePlacePicker (3.0.3):
+    - GoogleMaps (= 3.0.3)
+    - GooglePlaces (= 3.0.3)
+  - GooglePlaces (3.0.3):
+    - GoogleMaps/Base (= 3.0.3)
   - React (0.59.5):
     - React/Core (= 0.59.5)
-  - react-native-google-maps (0.24.2):
-    - Google-Maps-iOS-Utils (= 2.1.0)
-    - GoogleMaps (= 2.5.0)
-    - React
   - react-native-maps (0.24.2):
     - React
   - React/Core (0.59.5):
@@ -93,6 +73,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNCAsyncStorage (1.5.0):
+    - React
   - yoga (0.59.5.React)
 
 DEPENDENCIES:
@@ -100,9 +82,8 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - GoogleMaps
-  - GooglePlacePicker
-  - GooglePlaces
-  - react-native-google-maps (from `../node_modules/react-native-maps`)
+  - GooglePlacePicker (~> 3.0.3)
+  - GooglePlaces (~> 3.0.3)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -117,12 +98,12 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
-    - Google-Maps-iOS-Utils
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
@@ -136,10 +117,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
-  react-native-google-maps:
-    :path: "../node_modules/react-native-maps"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -148,15 +129,14 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
-  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
-  GooglePlacePicker: 1573e644ab54564d95c2643edc0f29091609e966
-  GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
+  GooglePlacePicker: 0c90898945f02ef36cce86fc9a107e1c5d3d26b1
+  GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
   React: 90adac468c7b72bf1fa6c64bf230650f851a8388
-  react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
+  RNCAsyncStorage: 63407ea82f1b5ac8fc53a0b8c569b08e0516a9e0
   yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
 
-PODFILE CHECKSUM: a27deef61c1138806052bac9f5fc866590d6fec7
+PODFILE CHECKSUM: bab7df1a00d041266d975d28c00cfe8629db5bf8
 
 COCOAPODS: 1.6.0.beta.2

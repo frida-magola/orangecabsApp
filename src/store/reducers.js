@@ -11,6 +11,7 @@ import {ActivatePasswordReducer as activatepass} from '../routes/Riders/Activate
 import {ViewTripReducer as viewtrip} from '../routes/viewtrips/module/ViewTrip';
 import {HelpReducer as help} from '../routes/Help/Reducer';
 import {MessageReducer as message} from '../routes/Message/module/Message';
+import {ProfileReducer as profile} from '../routes/Profile/module/Profile';
 import {ModalReducer as modal} from '../routes/Modal/module/modal';
 import {SidebarReducer as drawer} from '../routes/sidebar/Reducer';
 
@@ -30,6 +31,7 @@ export const MakeRootReducer = () => {
         help,
         message,
         modal,
+        profile,
         drawer
     });
 }

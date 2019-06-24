@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text,AsyncStorage,Modal,Alert, Dimensions } from 'react-native';
+import {View, Text,Modal,Alert, Dimensions } from 'react-native';
 import MapContainer from './MapContainer';
 import {Container,Header, Left, Body, Right, Button,Footer, FooterTab} from 'native-base';
 import Fare from './Fare';
@@ -7,6 +7,7 @@ import BooknowBtn from './FloatingActionBtn';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Home extends React.Component {
 
@@ -39,6 +40,12 @@ class Home extends React.Component {
             if(trips !== null){
                 Actions.modal();
             }
+
+        //Available request bookings sended
+        let booking = await AsyncStorage.getItem('bookings');
+        if(booking !== null){
+            Actions.viewtrip();
+        }
     
     }
     
@@ -46,7 +53,7 @@ class Home extends React.Component {
         user = async () =>{
           let token = await AsyncStorage.getItem('token');
           if(token != null){
-            await fetch('http://127.0.0.1/orangecabs/app/user_details.php',{
+            await fetch('http://10.0.0.44/orangecabs/app/user_details.php',{
                 method:"POST",
                 headers:{
                   Accept:'application/json',
@@ -98,12 +105,12 @@ class Home extends React.Component {
 
     render(){
        
-        const region = {
-            latitude: -33.924870,
-            longitude: 18.424055,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-        }
+        // const region = {
+        //     latitude: -33.924870,
+        //     longitude: 18.424055,
+        //     latitudeDelta: 0.0922,
+        //     longitudeDelta: 0.0421,
+        // }
 
         return(
              <Container>

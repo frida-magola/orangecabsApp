@@ -8,7 +8,6 @@ import {
     Dimensions,
     TouchableHighlight,
     Image,
-    AsyncStorage,
     KeyboardAvoidingView,
     Keyboard
 } from 'react-native';
@@ -16,6 +15,7 @@ import styles from './LoginStyles';
 // import Loading from 'react-native-whc-loading';
 import { sha256 } from 'react-native-sha256';
 import { TextInput,DefaultTheme } from 'react-native-paper';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Actions } from 'react-native-router-flux';
 
 const deviceWidth = Dimensions.get('window').width;
@@ -48,7 +48,7 @@ class LoginRider extends React.Component {
 
     loadInitialState = async () => {
         let mobile = await AsyncStorage.getItem('mobile');
-        let token = await AsyncStorage.getItem('id_token');
+        let token = await AsyncStorage.getItem('token');
         let username = await AsyncStorage.getItem('username');
         this.setState({username:username});
         if(token !== null){

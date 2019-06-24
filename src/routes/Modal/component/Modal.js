@@ -8,7 +8,6 @@ import {
     Dimensions,
     TouchableHighlight,
     Image,
-    AsyncStorage,
     KeyboardAvoidingView,
     Keyboard
 } from 'react-native';
@@ -20,6 +19,7 @@ import { Actions } from 'react-native-router-flux';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import RequestTripLocation from './requesttripLocation';
 import Loading from 'react-native-whc-loading';
+import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
 
 class Booknow extends React.Component {
@@ -53,7 +53,7 @@ class Booknow extends React.Component {
     componentDidMount(){
         this.loadtrip()
         .done();
-        this.getPrice().done();
+        // this.getPrice().done();
     }
 
     loadtrip = async () => {
@@ -69,9 +69,9 @@ class Booknow extends React.Component {
 
     }
 
-    getPrice = async () => {
-        let price = await AsyncStorage.getItem('price');
-    }
+    // getPrice = async () => {
+    //     let price = await AsyncStorage.getItem('price');
+    // }
 
     _logout = async () => {
     
@@ -173,8 +173,8 @@ class Booknow extends React.Component {
                             dropoff={this.state.dropoff}
                             Price={this.state.price}
                             mobile={this.state.mobile}
-                            email={this.state.email}
-                            username={this.state.username}
+                            // email={this.state.email}
+                            // username={this.state.username}
                             pickupLatitude={this.state.pickupLatitude}
                             pickupLongitude={this.state.pickupLongitude}
                             dropoffLatitude={this.state.dropoffLatitude}
@@ -269,7 +269,7 @@ class Booknow extends React.Component {
             <Footer style={{marginTop:10}}>
                     <FooterTab style={stylesm.footerContainer} >
 
-                       <Button vertical active onPress={() => Actions.home()}>
+                       {/* <Button vertical active onPress={() => Actions.home()}>
                             <Icon name="plus-circle" size={20} color={"#FF5E3A"} />
                             <Text style={{fontSize:12, color:"grey"}}>Book now</Text>
                         </Button>
@@ -277,13 +277,14 @@ class Booknow extends React.Component {
                         <Button vertical onPress={() => Actions.viewtrip()}>
                             <Icon name="eye" size={20} color={"#FF5E3A"} />
                             <Text style={{fontSize:12, color:"grey"}}>View Trips</Text>
-                        </Button>
+                        </Button> */}
+
                         <Button vertical onPress={() => Actions.help()}>
-                            <Icon active name="question" size={20} color={"#FF5E3A"} />
+                            <Icon active name="question" size={20} color={"#F89D29"} />
                             <Text style={{fontSize:12, color:"grey"}}>Help</Text>
                         </Button>
                         <Button vertical onPress={() => Actions.message()}>
-                            <Icon name="envelope-o" size={20} color={"#FF5E3A"} />
+                            <Icon name="envelope-o" size={20} color={"#F89D29"} />
                             <Text style={{fontSize:12, color:"grey"}}>Message</Text>
                         </Button>
 

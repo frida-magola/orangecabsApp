@@ -46,6 +46,7 @@ export function getCurrentLocation(){
         );
     }
 }
+
 //GET USER INPUT
 export function getInputData(payload){
     return{
@@ -83,7 +84,7 @@ export function GetAddressPredictions(){
 
 //Get selected address
 export function getSelectedAddress(payload){
-    const dummyNumbers = {
+      const dummyNumbers = {
         baseFare:5.00, 
         timeRate:0.75, 
         distanceRate:7.50,
@@ -102,8 +103,8 @@ export function getSelectedAddress(payload){
                 if(store().home.selectedAddress.selectedPickUp && store().home.selectedAddress.selectedDropOff){
                     request.get("https://maps.googleapis.com/maps/api/distancematrix/json")
                     .query({
-                        origins: store().home.selectedAddress.selectedPickUp.latitude +","+ store().home.selectedAddress.selectedPickUp.longitude,
-                        destinations: store().home.selectedAddress.selectedDropOff.latitude +","+ store().home.selectedAddress.selectedDropOff.longitude,
+                        origins: store().home.selectedAddress.selectedPickUp.location.latitude +","+ store().home.selectedAddress.selectedPickUp.location.longitude,
+                        destinations: store().home.selectedAddress.selectedDropOff.location.latitude +","+ store().home.selectedAddress.selectedDropOff.location.longitude,
                         travelMode: 'DRIVING',
                         key:"AIzaSyB-1SZLcvFN_cxb2HXrmtf7EhfA2O94SUs"
                     })
@@ -147,14 +148,14 @@ export function bookCar() {
         const payload = { 
                 data:{
                     mobile:mobile,
-                    username: token,
+                    token: token,
                     pickUp: store().home.selectedAddress.selectedPickUp.address,
-                    pickUpLatitude: store().home.selectedAddress.selectedPickUp.latitude,
-                    pickUpLongitude: store().home.selectedAddress.selectedPickUp.longitude,
+                    pickUpLatitude: store().home.selectedAddress.selectedPickUp.location.latitude,
+                    pickUpLongitude: store().home.selectedAddress.selectedPickUp.location.longitude,
                     price:store().home.fare,
                     dropOff: store().home.selectedAddress.selectedDropOff.address,
-                    dropOffLatitude: store().home.selectedAddress.selectedDropOff.latitude,
-                    dropOffLongitude: store().home.selectedAddress.selectedDropOff.longitude,
+                    dropOffLatitude: store().home.selectedAddress.selectedDropOff.location.latitude,
+                    dropOffLongitude: store().home.selectedAddress.selectedDropOff.location.longitude,
                     status:"unpaid"
                 }
         };
@@ -165,8 +166,7 @@ export function bookCar() {
         .finish((error,res) => {
             dispatch({
                 type:BOOK_CAR,
-                payload:res.body
-                
+                payload:res.body    
             });
 
             AsyncStorage.setItem('trips',JSON.stringify(payload));
