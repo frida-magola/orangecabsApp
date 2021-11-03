@@ -17,6 +17,6 @@
     "js-base64": "^2.5.0",
     "mysql": "github:mysqljs/mysql",
     "nodemon": "^1.18.9",
-    "validator": "^10.10.0"
+    "validator": "^13.7.0"
   }
 }
